@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DraggableViewActivity"
+    android:background="@android:color/black">
+
+    <LinearLayout
+        android:id="@+id/tool_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/edit_tools_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/edit_story_tools" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sketch_tools_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <include layout="@layout/draw_sketch_tools" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tool_layout">
+
+        <ImageView
+            android:id="@+id/image_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <com.developidea.draganddropview.DrawingView
+            android:id="@+id/sketch_drawing_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+
+    <com.jaygoo.widget.VerticalRangeSeekBar
+        android:id="@+id/text_size_slider"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tool_layout"
+        app:rsb_gravity="top"
+        app:rsb_indicator_height="wrap_content"
+        app:rsb_indicator_padding_bottom="5dp"
+        app:rsb_indicator_padding_left="16dp"
+        app:rsb_indicator_padding_top="5dp"
+        app:rsb_indicator_show_mode="alwaysHide"
+        app:rsb_indicator_width="wrap_content"
+        app:rsb_max="100"
+        app:rsb_min="10"
+        app:rsb_mode="single"
+        app:rsb_orientation="left"
+        app:rsb_progress_color="@color/colorAccent"
+        app:rsb_progress_default_color="@color/rsbColorSeekBarDefault"
+        app:rsb_tick_mark_mode="number" />
+
+    <com.jaygoo.widget.VerticalRangeSeekBar
+        android:id="@+id/pen_size_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tool_layout"
+        app:rsb_gravity="top"
+        app:rsb_indicator_height="wrap_content"
+        app:rsb_indicator_padding_bottom="5dp"
+        app:rsb_indicator_padding_left="16dp"
+        app:rsb_indicator_padding_top="5dp"
+        app:rsb_indicator_show_mode="alwaysHide"
+        app:rsb_indicator_width="wrap_content"
+        app:rsb_max="100"
+        app:rsb_min="10"
+        app:rsb_mode="single"
+        app:rsb_orientation="left"
+        app:rsb_progress_color="@color/colorAccent"
+        app:rsb_progress_default_color="@color/rsbColorSeekBarDefault"
+        app:rsb_tick_mark_mode="number" />
+
+    <ImageView
+        android:id="@+id/color_picker_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_color_lens_white_48dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tool_layout" />
+
+    <ImageView
+        android:id="@+id/pen_color_picker_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_color_lens_white_48dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tool_layout" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/open_camera_button"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:background="@drawable/bol_orange"
+            android:text="Cam"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
